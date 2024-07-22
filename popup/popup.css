@@ -1,0 +1,27 @@
+a {
+  border: 1px solid #ccc;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+}
+
+body {
+  text-align: center;
+  width: max-content;
+}
+
+#qr {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+textarea {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+  outline: none;
+  border: 1px solid #ccc;
+}

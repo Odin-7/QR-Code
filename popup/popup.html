@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR生成器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="box">
+  <div id="qr-show">
+    <div id="qr"></div>
+    <p style="color: #ccc;">点击上面二维码进入编辑</p>
+  </div>
+  <div id="qr-edit" style="display: none;">
+    <textarea></textarea>
+    <a id="cancle">取消</a><a id="confirm">确定</a>
+  </div>
+</body>
+
+<script src="../qrcode-generator/qrcode.js" defer></script>
+<script src="../qrcode-generator/qrcode_UTF8.js" defer></script>
+<script src="popup.js" defer></script>
+</html>

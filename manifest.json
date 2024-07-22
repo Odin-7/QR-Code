@@ -1,0 +1,17 @@
+{
+  "name": "QR生成器",
+  "description": "将当前URL地址转换成二维码",
+  "author": "Tanzhiliang",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": ["notifications", "tabs", "storage"]
+}
