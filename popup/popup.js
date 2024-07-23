@@ -7,9 +7,41 @@ window.onload = function () {
     active: true,
     lastFocusedWindow: true
   }, function (tab) {
-    // alert(tab[0].url)
-    make(tab[0].url)
+    let OwnIp
+    getLocalIPs(function (ips) {
+      OwnIp = ips && ips[1]
+      if (tab[0].url.includes('localhost') || tab[0].url.includes('127.0.0.1')) {
+        let url = tab[0].url.replace('localhost', OwnIp)
+        url = url.replace('127.0.0.1', OwnIp)
+        make(url)
+      } else {
+        make(tab[0].url)
+      }
+    });
   })
+
+  function getLocalIPs(callback) {
+    var ips = [];
+    var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
+    var pc = new RTCPeerConnection({ iceServers: [] });
+
+    pc.createDataChannel('');
+
+    pc.onicecandidate = function (e) {
+      if (!e.candidate) {
+        pc.close();
+        callback(ips);
+        return;
+      }
+      var ip = /^candidate:.+ (\S+) \d+ typ/.exec(e.candidate.candidate)[1];
+      if (ips.indexOf(ip) == -1) ips.push(ip);
+    };
+
+    pc.createOffer(function (sdp) {
+      pc.setLocalDescription(sdp);
+    }, function onerror() { });
+  }
+
 
   function toggle(flag) {
     qr_show.style.display = flag ? 'block' : 'none'
